@@ -2,4 +2,14 @@ from sqlalchemy  import Integer, String
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 class Base(DeclarativeBase):
-    pass
+    pass 
+
+class UserDB(Base): 
+    __tablename__ ="users"
+    id: Mapped(int)=mapped_column(primary_key=True, index=True)
+    equipment_id: Mapped(int)=mapped_column(Integer, unique=True, nullable=False)
+    borrower_name: Mapped(str)=mapped_column(String=8, nullable=False)
+    loan_days: Mapped(int)=mapped_column(Integer, nullable=False)
+    purpose: Mapped(str)=mapped_column(String=255, nullable=False)
+    status: Mapped(str)=mapped_column(String=8, nullable=False)
+
